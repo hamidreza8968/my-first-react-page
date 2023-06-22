@@ -1,17 +1,12 @@
 import React from "react";
 import {useState} from "react";
 
-const TodoItem = function ({item}) {
-
-    const [change , setChange] = useState(false);
-    const checkHandle = () =>{
-        setChange(change ? false : true);
-    };
+const TodoItem = function (props) {
 
     return (
         <div className="todo-item">
-            <input type="checkbox" checked={change} onChange={checkHandle}/>
-            <p>{item.id}-{item.name} : {item.price}</p>
+            <input type="checkbox" checked={props.item.completed} onChange={() => props.handleChange(props.item.id)}/>
+            <p>{props.item.id}-{props.item.name} : {props.item.price}</p>
         </div>
     )
 };
